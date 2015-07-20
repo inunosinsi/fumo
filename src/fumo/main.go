@@ -1,27 +1,26 @@
 package main
 
-import (	
-	"github.com/google/gxui"
-	"github.com/google/gxui/drivers/gl"
-	"github.com/google/gxui/themes/dark"
+import (
+	"fmt"
+	"gopkg.in/qml.v1"
+	"os"
 )
 
-func appMain(driver gxui.Driver) {
-	theme := dark.CreateTheme(driver)
-	editor := theme.CreateCodeEditor()
-	
-	window := theme.CreateWindow(580, 300, "Code Editor")
-	
-	color := gxui.White
-	
-	brush := gxui.CreateBrush(color)
-	window.SetBackgroundBrush(brush)
-	
-	window.AddChild(editor)
-	
-	window.OnClose(driver.Terminate)
+func main() {
+	if err := qml.Run(run); err != nil {
+		fmt.Fprintf(os.Stderr, "error: %v\n", err)
+		os.Exit(1)
+	}
 }
 
-func main() {
-	gl.StartDriver(appMain)
+func run() error {
+	engine := qml.NewEngine()
+	component, err := engine.LoadFile("main.qml")
+	if err != nil {
+		return err
+	}
+	win := component.CreateWindow(nil)
+	win.Show()
+	win.Wait()
+	return nil
 }
