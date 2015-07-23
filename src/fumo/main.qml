@@ -13,7 +13,9 @@ ApplicationWindow {
     FileDialog {
         id: fileDialog
         nameFilters: [ "Text files (*.txt)" ]
-//        onAccepted: テキストエリアで表示したいな
+        onAccepted: {
+            textArea.text = fileDialog.fileUrl
+        }
     }
 
     //開くことに関するActionオブジェクト
