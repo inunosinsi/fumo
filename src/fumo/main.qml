@@ -3,7 +3,6 @@ import QtQuick.Controls 1.3
 import QtQuick.Window 2.2
 import QtQuick.Layouts 1.0
 import QtQuick.Dialogs 1.2
-import "content"
 
 ApplicationWindow {
     title: qsTr("Qt TextArea")
@@ -11,12 +10,10 @@ ApplicationWindow {
     height: 480
     visible: true
 	
-    ImageViewer { id: imageViewer }
-
     FileDialog {
         id: fileDialog
         nameFilters: [ "Text files (*.txt)" ]
-        onAccepted: imageViewer.open(fileUrl)
+//        onAccepted: テキストエリアで表示したいな
     }
 
     //開くことに関するActionオブジェクト
