@@ -3,6 +3,7 @@ import QtQuick.Controls 1.3
 import QtQuick.Window 2.2
 import QtQuick.Layouts 1.0
 import QtQuick.Dialogs 1.2
+import GoExtensions 1.0
 
 ApplicationWindow {
     title: qsTr("Qt TextArea")
@@ -14,8 +15,12 @@ ApplicationWindow {
         id: fileDialog
         nameFilters: [ "Text files (*.txt)" ]
         onAccepted: {
-            textArea.text = fileDialog.fileUrl
+            textArea.text = fileIo.EchoText()
         }
+    }
+
+    FileIO {
+        id: fileIo
     }
 
     //開くことに関するActionオブジェクト
@@ -24,7 +29,7 @@ ApplicationWindow {
         text: "&Open"
         shortcut: StandardKey.Open
         onTriggered: fileDialog.open()
-        tooltip: "Open an file"
+//        tooltip: "Open an file"
     }
 
     menuBar: MenuBar {
