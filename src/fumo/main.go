@@ -13,19 +13,22 @@ func main() {
 	}
 }
 
-type FileIO struct {
-	qml.Object
-	text string
-}
+//type FileIO struct {
+//	qml.Object
+//	text string
+//}
 
-func (io *FileIO) EchoText() string{
-	return "test"
-}
+//func (io *FileIO) EchoText() string{
+//	return "test"
+//}
 
 func run() error {
-	qml.RegisterTypes("GoExtensions", 1, 0, []qml.TypeSpec{{
-		Init: func(f *FileIO, obj qml.Object) { f.Object = obj },
-	}})
+//	qml.RegisterTypes("GoExtensions", 1, 0, []qml.TypeSpec{{
+//		Init: func(f *FileIO, obj qml.Object) { 
+//			f.text = "hoge"
+//			f.Object = obj
+//		},
+//	}})
 	
 	engine := qml.NewEngine()
 	
