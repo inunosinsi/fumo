@@ -3,6 +3,7 @@ import QtQuick.Controls 1.3
 import QtQuick.Window 2.2
 import QtQuick.Layouts 1.0
 import QtQuick.Dialogs 1.2
+import "js/Sample.js" as JS
 
 ApplicationWindow {
     title: qsTr("Qt TextArea")
@@ -13,7 +14,7 @@ ApplicationWindow {
     FileDialog {
         id: fileDialog
         nameFilters: [ "Text files (*.txt)" ]
-        onAccepted: sampleAction.insert(fileUrl)
+        onAccepted: textArea.text = JS.insert()
     }
 	
     //開くことに関するActionオブジェクト
@@ -24,13 +25,6 @@ ApplicationWindow {
         onTriggered: fileDialog.open()
 //        tooltip: "Open an file"
     }
-	
-	Action {
-		id: sampleAction
-		function insert(source){
-			textArea.text = "hoge"
-		}
-	}
 
     menuBar: MenuBar {
         Menu {

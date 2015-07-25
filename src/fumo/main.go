@@ -13,23 +13,7 @@ func main() {
 	}
 }
 
-//type FileIO struct {
-//	qml.Object
-//	text string
-//}
-
-//func (io *FileIO) EchoText() string{
-//	return "test"
-//}
-
 func run() error {
-//	qml.RegisterTypes("GoExtensions", 1, 0, []qml.TypeSpec{{
-//		Init: func(f *FileIO, obj qml.Object) { 
-//			f.text = "hoge"
-//			f.Object = obj
-//		},
-//	}})
-	
 	engine := qml.NewEngine()
 	
 	component, err := engine.LoadFile("main.qml")
@@ -42,4 +26,3 @@ func run() error {
 	
 	return nil
 }
-
